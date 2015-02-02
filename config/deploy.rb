@@ -42,6 +42,13 @@ set :keep_releases, 3 # default: 5
 set :default_env, { rvm_bin_path: '~/.rvm/bin' }
 set :rvm_ruby_version, '2.1.1'
 
+namespace :file do
+  desc "Copy example files to their respective yml files"
+  task :copy, :roles => [:app,:worker] do
+    run("cd #{current_release} && ./configure")
+  end
+end
+
 
 
 # set :bundle_bins, fetch(:bundle_bins, []).concat(%w{ hutch unicorn })
