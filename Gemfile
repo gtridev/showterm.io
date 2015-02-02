@@ -38,16 +38,13 @@ gem 'jquery-rails'
 
 # Use unicorn as the app server
 # gem 'unicorn'
-gem 'capistrano-rvm'
+group :development do
 
-# Deploy with Capistrano
-gem 'capistrano', '~> 3.1.0'
+	gem 'capistrano-rvm'
+	gem 'capistrano', '~> 3.1.0'
+	gem 'capistrano-rails', '~> 1.1.0'
+	gem 'capistrano-bundler'
 
-# rails specific capistrano funcitons
-gem 'capistrano-rails', '~> 1.1.0'
-
-# integrate bundler with capistrano
-gem 'capistrano-bundler'
-
+end 
 # To use debugger
 # gem 'debugger'
