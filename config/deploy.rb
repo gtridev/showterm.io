@@ -9,7 +9,7 @@ set :branch, ENV['BRANCH'] || proc { `git rev-parse --abbrev-ref HEAD`.chomp }.c
 ask :branch, ENV['BRANCH'] || proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call if %w{production}.include?(ARGV.first) 
 
 # Default deploy_to directory is /var/www/my_app
-set :deploy_to, "/home/deploy/#{fetch(:application)}"
+set :deploy_to, "/home/vagrant/#{fetch(:application)}"
 
 set :user, 'vagrant'
 set :ssh_options, {
