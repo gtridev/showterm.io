@@ -39,16 +39,19 @@ set :hipchat_message_format, 'html'
 set :log_level, :debug
 # set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/templates public/assets vendor/assets } # default: []
 set :keep_releases, 3 # default: 5
+set :default_env, { rvm_bin_path: '~/.rvm/bin' }
 set :rvm_ruby_version, '2.1.1'
 
 
-# set :bundle_bins, fetch(:bundle_bins, []).concat(%w{ hutch unicorn })
 
-set :bundle_binstubs, nil
-set :bundle_gemfile, -> { release_path.join('Gemfile') }      # default: nil
-set :bundle_path, nil
-set :bundle_without, %w{development test darwin}.join(' ')
-set :bundle_flags, '--frozen --quiet'                       # default: '--deployment --quiet'
-set :bundle_jobs, 2     #This is only available for bundler 1.4+
+# set :bundle_bins, fetch(:bundle_bins, []).concat(%w{ hutch unicorn })
+set :bundle_flags, '--deployment --quiet'
+
+# set :bundle_binstubs, nil
+# set :bundle_gemfile, -> { release_path.join('Gemfile') }      # default: nil
+# set :bundle_path, nil
+# set :bundle_without, %w{development test darwin}.join(' ')
+# set :bundle_flags, '--frozen --quiet'                       # default: '--deployment --quiet'
+# set :bundle_jobs, 2     #This is only available for bundler 1.4+
 
 # after "deploy:restart", "newrelic:notice_deployment" if %w{production}.include?(ARGV.first)

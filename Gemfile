@@ -38,6 +38,7 @@ gem 'jquery-rails'
 
 # Use unicorn as the app server
 # gem 'unicorn'
+gem 'capistrano-rvm'
 
 # Deploy with Capistrano
 gem 'capistrano', '~> 3.1.0'
