@@ -44,7 +44,7 @@ set :rvm_ruby_version, '2.1.1'
 
 namespace :file do
   desc "Copy example files to their respective yml files"
-  task :copy, :roles => [:app,:worker] do
+  task :copy do
     run("cd #{current_release} && ./configure")
   end
 end
@@ -62,3 +62,4 @@ set :bundle_flags, '--deployment --quiet'
 # set :bundle_jobs, 2     #This is only available for bundler 1.4+
 
 # after "deploy:restart", "newrelic:notice_deployment" if %w{production}.include?(ARGV.first)
+before "deploy:restart", "file:copy" if %w{production}.include?(ARGV.first)
