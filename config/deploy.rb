@@ -37,7 +37,7 @@ set :hipchat_message_format, 'html'
 # end
 
 set :log_level, :debug
-# set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/templates public/assets vendor/assets } # default: []
+set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/templates public/assets vendor/assets } # default: []
 set :keep_releases, 3 # default: 5
 set :default_env, { rvm_bin_path: '~/.rvm/bin' }
 set :rvm_ruby_version, '2.1.1'
@@ -49,7 +49,7 @@ namespace :file do
   end
 end
 
-
+set :assets_dependencies, %W(app/assets lib/assets vendor/assets Gemfile.lock config/routes.rb config/environments/production.rb config/environments/staging.rb).keep_if{|f| File.exists?(f)}.join(' ')
 
 # set :bundle_bins, fetch(:bundle_bins, []).concat(%w{ hutch unicorn })
 set :bundle_flags, '--deployment --quiet'
@@ -62,4 +62,5 @@ set :bundle_flags, '--deployment --quiet'
 # set :bundle_jobs, 2     #This is only available for bundler 1.4+
 
 # after "deploy:restart", "newrelic:notice_deployment" if %w{production}.include?(ARGV.first)
+after "deploy:updated", "deploy:migrate" unless ARGV.first == 'production'
 before "deploy:restart", "file:copy" if %w{production}.include?(ARGV.first)
