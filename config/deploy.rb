@@ -42,12 +42,12 @@ set :keep_releases, 3 # default: 5
 set :default_env, { rvm_bin_path: '~/.rvm/bin' }
 set :rvm_ruby_version, '2.1.1'
 
-namespace :file do
-  desc "Copy example files to their respective yml files"
-  task :copy do
-    run("cd #{current_release} && ./configure")
-  end
-end
+# namespace :file do
+#   desc "Copy example files to their respective yml files"
+#   task :copy do
+#     run("cd #{current_release} && ./configure")
+#   end
+# end
 
 set :assets_dependencies, %W(app/assets lib/assets vendor/assets Gemfile.lock config/routes.rb config/environments/production.rb config/environments/staging.rb).keep_if{|f| File.exists?(f)}.join(' ')
 
@@ -62,5 +62,5 @@ set :bundle_flags, '--deployment --quiet'
 # set :bundle_jobs, 2     #This is only available for bundler 1.4+
 
 # after "deploy:restart", "newrelic:notice_deployment" if %w{production}.include?(ARGV.first)
-after "deploy:updated", "deploy:migrate" unless ARGV.first == 'production'
-before "deploy:restart", "file:copy" if %w{production}.include?(ARGV.first)
+after "deploy:updated", "deploy:setup" unless ARGV.first == 'production'
+# before "deploy:restart", "file:copy" if %w{production}.include?(ARGV.first)

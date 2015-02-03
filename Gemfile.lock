@@ -88,11 +88,11 @@ GEM
     minitest (5.4.3)
     multi_json (1.10.0)
     multi_xml (0.5.5)
-    mysql2 (0.3.17)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.2)
     netrc (0.7.7)
+    pg (0.17.1)
     polyglot (0.3.4)
     pry (0.10.0.pre4)
       coderay (~> 1.1.0)
@@ -173,7 +173,7 @@ DEPENDENCIES
   coffee-rails
   heroku
   jquery-rails
-  mysql2
+  pg
   pry (= 0.10.0.pre4)
   rails
   rails_12factor
