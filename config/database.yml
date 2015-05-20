@@ -1,15 +1,19 @@
+<% jdbc = defined?(JRUBY_VERSION) ? 'jdbc' : '' %>  #' Fix vim highlighting
+
 production:
-  adapter: postgresql
-  host: localhost
-  username: postgres
-  password:
+  adapter: <%= jdbc %>mysql2
   database: db
-  encoding: UTF8
+  pool: 35
+  username: root
+  password: kathmandu09
+  host: localhost
+  encoding: utf8
 
 development:
-  adapter: postgresql
-  host: localhost
-  username: postgres
-  password:
+  adapter: <%= jdbc %>mysql2
   database: db
-  encoding: UTF8
+  pool: 35
+  username: root
+  password: kathmandu09
+  host: localhost
+  encoding: utf8
